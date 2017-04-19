@@ -43,6 +43,8 @@ class Speaker(models.Model):
         editable=False,
         verbose_name=_("Created")
     )
+    github_account = models.CharField(max_length=100, unique=True, null=True, verbose_name=_("Github Account"))
+    phone_number = models.CharField(max_length=50, null=True, verbose_name=_("Phone Number"))
 
     class Meta:
         ordering = ['name']
