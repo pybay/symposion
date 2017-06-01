@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-import datetime
+from django.utils import timezone
 
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -39,7 +39,7 @@ class Speaker(models.Model):
     invite_email = models.CharField(max_length=200, unique=True, null=True, db_index=True, verbose_name=_("Invite_email"))
     invite_token = models.CharField(max_length=40, db_index=True, verbose_name=_("Invite token"))
     created = models.DateTimeField(
-        default=datetime.datetime.now,
+        default=timezone.now,
         editable=False,
         verbose_name=_("Created")
     )
