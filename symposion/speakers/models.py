@@ -8,6 +8,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 from symposion.markdown_parser import parse
 
@@ -48,6 +49,10 @@ class Speaker(models.Model):
         ordering = ['name']
         verbose_name = _("Speaker")
         verbose_name_plural = _("Speakers")
+
+    @property
+    def name_slug(self):
+        return slugify(self.name)
 
     def save(self, *args, **kwargs):
         self.biography_html = parse(self.biography)
